@@ -10,8 +10,7 @@ install dev dependencies
 
 ## Then
 
-place your rapid api key from rapid api hub 
-https://rapidapi.com/ytdlfree/api/youtube-v3-alternative/
+place your rapid api key from rapid api hub (https://rapidapi.com/ytdlfree/api/youtube-v3-alternative)
 
 Run The app
 
