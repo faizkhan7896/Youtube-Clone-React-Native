@@ -1,14 +1,26 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {themeColors} from '../theme';
 import * as Icon from "react-native-feather";
-import { categories, shortVideos, videos } from '../constants';
+import { categories, shortVideos } from '../constants';
 import ShortVideoCard from '../components/shortVideoCard';
 import VideoCard from '../components/videoCard';
+import { fetchTrendingVideos } from '../api/youtube';
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [videos, setVideos] = useState([]);
+
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  const fetchData = async ()=>{
+    const data = await fetchTrendingVideos();
+    // console.log('video: ',data[0]);
+    setVideos(data);
+  }
   return (
     <View style={{backgroundColor: themeColors.bg}} className="flex-1">
       {/* logo and profile icon */}
@@ -16,7 +28,9 @@ export default function HomeScreen() {
           <View className="flex-row items-center space-x-1">
             <Image source={require('../assets/icons/youtubeIcon.png')}
               className="h-7 w-10" />
-            <Text className="text-white font-semibold text-xl tracking-tighter">Youtube</Text>
+            <Text className="text-white font-semibold text-xl tracking-tighter">
+              YouTube
+            </Text>
           </View>
           <View className="flex-row items-center space-x-3">
             <Icon.Cast stroke="white" strokeWidth={1.2} height="22" />
@@ -29,7 +43,7 @@ export default function HomeScreen() {
 
         <ScrollView className="flex-1 -mt-6" showsVerticalScrollIndicator={false}>
           {/* categories */}
-          <View className="py-2 pb-5">
+          <View className="py-2 pb-3">
             <ScrollView className="px-4" horizontal showsHorizontalScrollIndicator={false}>
               {
                 categories.map((category, index)=>{
@@ -51,7 +65,7 @@ export default function HomeScreen() {
           </View>
 
           {/* suggested Video */}
-          <VideoCard video={videos[4]} />
+          {/* <VideoCard video={videos[4]} /> */}
 
           {/* short videos */}
           <View 

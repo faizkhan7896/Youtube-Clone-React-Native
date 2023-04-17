@@ -1,3 +1,7 @@
+export const rapidApiKey = 'place your rapid api key here';
+// below is the api used from rapid api hub
+// https://rapidapi.com/ytdlfree/api/youtube-v3-alternative/
+
 export const categories = [
   'All',
   'Gaming',
