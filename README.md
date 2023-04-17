@@ -12,6 +12,8 @@ install dev dependencies
 
 place your rapid api key from rapid api hub (https://rapidapi.com/ytdlfree/api/youtube-v3-alternative)
 
+## Then
+
 Run The app
 
 ### `npm start` or `yarn start`
